@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌈 무지개 열쇠 모험단 TRPG 플레이어</title>
+  <!-- Google Fonts for Playful and Modern Styling -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Nanum+Pen+Script&family=Gothic+A1:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons for Premium UI -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="app-header no-print">
+    <div class="header-logo">
+      <span class="logo-emoji">🌈</span>
+      <h1>무지개 열쇠 모험단</h1>
+      <span class="badge">플레이 도반자</span>
+    </div>
+    <nav class="app-nav">
+      <button class="nav-btn active" data-tab="tab-rules">
+        <i data-lucide="book-open"></i> <span>규칙서</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-character">
+        <i data-lucide="shield"></i> <span>모험가 카드</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-dice">
+        <i data-lucide="dices"></i> <span>주사위 광장</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-adventures">
+        <i data-lucide="map"></i> <span>시나리오 북</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="app-main">
+    
+    <!-- ================= TAB: RULES ================= -->
+    <section id="tab-rules" class="tab-content active no-print">
+      <div class="welcome-banner">
+        <h2>🌈 어서 오세요, 무지개 열쇠 모험단님!</h2>
+        <p>다섯 살 모험가와 가족을 위한 쉽고 재미있는 TRPG 놀이 도우미입니다. 아래 규칙을 읽고 모험을 떠나요!</p>
+      </div>
+
+      <div class="rules-grid">
+        <div class="card rule-card">
+          <div class="card-header">
+            <i data-lucide="users" class="icon-primary"></i>
+            <h3>1. 역할 나누기</h3>
+          </div>
+          <p><strong>이야기 할아버지/할머니 (GM - 아빠/엄마)</strong>: 이야기를 들려주고 몬스터와 동물들의 목소리를 내며 모험을 이끌어 줍니다.</p>
+          <p><strong>꼬마 모험가 (플레이어 - 딸아이/엄마)</strong>: 귀여운 영웅이 되어 마법의 숲과 꿈나라를 모험하는 주인공이 됩니다.</p>
+        </div>
+
+        <div class="card rule-card">
+          <div class="card-header">
+            <i data-lucide="star" class="icon-warning"></i>
+            <h3>2. 캐릭터 능력치</h3>
+          </div>
+          <p>꼬마 모험가들은 네 가지 <strong>무지개 능력</strong>을 가집니다:</p>
+          <div class="rule-stats-list">
+            <div class="r-stat-item s-red"><strong>🔴 튼튼이</strong>: 힘쓰기, 문 밀기, 무거운 것 들기</div>
+            <div class="r-stat-item s-green"><strong>🟢 날쌘이</strong>: 쌩쌩 달리기, 장애물 피하기, 점프</div>
+            <div class="r-stat-item s-blue"><strong>🔵 척척이</strong>: 수수께끼 풀기, 길 찾기, 요술 쓰기</div>
+            <div class="r-stat-item s-yellow"><strong>🟡 상냥이</strong>: 동물과 대화, 부끄러운 친구 돕기, 미소</div>
+          </div>
+        </div>
+
+        <div class="card rule-card">
+          <div class="card-header">
+            <i data-lucide="sparkles" class="icon-info"></i>
+            <h3>3. 주사위 판정</h3>
+          </div>
+          <p>도전할 때 해당 능력의 별 개수만큼 주사위를 던집니다. (도움이 있으면 <strong>+1 도움 주사위</strong>!)</p>
+          <div class="dice-results-guide">
+            <div class="guide-item success">
+              <span class="guide-badge">⭐ 대성공 (5 또는 6 나옴)</span>
+              <p>행동에 완벽하게 성공하고 멋진 일이 일어나요!</p>
+            </div>
+            <div class="guide-item twist">
+              <span class="guide-badge">🌀 어라라? (1, 2, 3만 나옴)</span>
+              <p>실패 대신, 재미있는 반전이 일어나 이야기가 진행돼요. (하트 -1)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card rule-card">
+          <div class="card-header">
+            <i data-lucide="heart" class="icon-danger"></i>
+            <h3>4. 체력과 간식</h3>
+          </div>
+          <p>위험을 만나면 하트(❤️)가 깎여요. 하지만 절대 쓰러져 사라지지 않아요!</p>
+          <p class="highlight-box">💡 <strong>꿀팁!</strong> 게임 중에 하트를 잃었을 때는 <strong>실제 젤리나 초콜릿 간식</strong>을 한 입 먹고 회복하게 해 주면 아이가 백배 더 즐거워해요!</p>
+        </div>
+      </div>
+
+      <div class="card gm-tips-card">
+        <div class="card-header">
+          <i data-lucide="sparkles"></i>
+          <h3> 아빠 GM을 위한 3대 황금 규칙</h3>
+        </div>
+        <div class="gm-tips-content">
+          <div class="tip-item">
+            <h4>1. "안 돼" 대신 "그래, 그리고..." (Yes, and...)</h4>
+            <p>아이가 "방귀 뀌어서 날아갈래요!"라고 하면 "안 돼" 대신 "그래! 뿡 날아갔어. 그런데 소리가 너무 커서 새들이 깜짝 놀라 날아갔네!"라고 해주세요.</p>
+          </div>
+          <div class="tip-item">
+            <h4>2. 분위기는 언제나 신나고 재미있게!</h4>
+            <p>괴물이 너무 무섭다면 갑자기 재채기를 하며 무지개 풍선을 퐁퐁 뿜게 해 긴장을 풀어주세요.</p>
+          </div>
+          <div class="tip-item">
+            <h4>3. 아이템 그리며 놀기</h4>
+            <p>보물 상자에서 아이템을 얻으면 종이에 직접 과자나 요술봉 그림을 그리고 꾸미는 시간을 가지세요.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB: CHARACTER SHEET ================= -->
+    <section id="tab-character" class="tab-content no-print">
+      <div class="sheet-container">
+        
+        <!-- Character Creator Panel (Left) -->
+        <div class="creator-panel">
+          <div class="card">
+            <h3>🧙 모험가 만들기</h3>
+            
+            <!-- Character switcher tabs -->
+            <div class="creator-switcher">
+              <button class="switcher-btn active" data-char-idx="0">모험가 1 (아이)</button>
+              <button class="switcher-btn" data-char-idx="1">모험가 2 (엄마)</button>
+            </div>
+            
+            <div class="form-group" style="margin-top: 15px;">
+              <label for="char-name">모험가 이름</label>
+              <input type="text" id="char-name" value="초록 토끼" placeholder="귀여운 이름을 적어주세요!">
+            </div>
+
+            <div class="form-group">
+              <label>모험가 직업/모습</label>
+              <div class="preset-classes">
+                <button class="preset-btn active" data-class="🐰 토끼 기사" data-icon="rabbit">🐰 토끼 기사</button>
+                <button class="preset-btn" data-class="🧚 요정 마법사" data-icon="wizard">🧚 요정 마법사</button>
+                <button class="preset-btn" data-class="🐿️ 다람쥐 탐정" data-icon="squirrel">🐿️ 다람쥐 탐정</button>
+                <button class="preset-btn" data-class="🦖 아기 용 소방관" data-icon="dragon">🦖 아기 용</button>
+                <button class="preset-btn" data-class="직접 입력" data-icon="custom">✏️ 직접 입력</button>
+              </div>
+              <input type="text" id="char-class-custom" class="hidden-input" placeholder="원하는 직업을 적으세요" style="display:none;">
+            </div>
+
+            <div class="form-group">
+              <label>아바타 테마 색상</label>
+              <div class="color-pickers">
+                <button class="color-btn active c-red" data-color="var(--red-pastel)"></button>
+                <button class="color-btn c-green" data-color="var(--green-pastel)"></button>
+                <button class="color-btn c-blue" data-color="var(--blue-pastel)"></button>
+                <button class="color-btn c-yellow" data-color="var(--yellow-pastel)"></button>
+                <button class="color-btn c-pink" data-color="var(--pink-pastel)"></button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>무지개 능력치 배정</label>
+              <p class="form-helper">남은 별 포인트: <span id="stat-points-left">0</span>개 (총 8개 사용)</p>
+              <div class="stat-sliders">
+                <div class="slider-row red">
+                  <span class="stat-label">🔴 튼튼이 (힘)</span>
+                  <div class="star-rating" data-stat="sturdy">
+                    <span class="star-icon active" data-value="1">★</span>
+                    <span class="star-icon active" data-value="2">★</span>
+                    <span class="star-icon" data-value="3">★</span>
+                  </div>
+                </div>
+                <div class="slider-row green">
+                  <span class="stat-label">🟢 날쌘이 (속도)</span>
+                  <div class="star-rating" data-stat="agile">
+                    <span class="star-icon active" data-value="1">★</span>
+                    <span class="star-icon active" data-value="2">★</span>
+                    <span class="star-icon" data-value="3">★</span>
+                  </div>
+                </div>
+                <div class="slider-row blue">
+                  <span class="stat-label">🔵 척척이 (요술)</span>
+                  <div class="star-rating" data-stat="smart">
+                    <span class="star-icon active" data-value="1">★</span>
+                    <span class="star-icon active" data-value="2">★</span>
+                    <span class="star-icon" data-value="3">★</span>
+                  </div>
+                </div>
+                <div class="slider-row yellow">
+                  <span class="stat-label">🟡 상냥이 (마음)</span>
+                  <div class="star-rating" data-stat="charm">
+                    <span class="star-icon active" data-value="1">★</span>
+                    <span class="star-icon active" data-value="2">★</span>
+                    <span class="star-icon" data-value="3">★</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>소지품 3가지</label>
+              <div class="item-inputs">
+                <input type="text" id="item-0" value="요술 리본 지팡이" placeholder="보물 1">
+                <input type="text" id="item-1" value="달콤한 딸기 사탕" placeholder="보물 2">
+                <input type="text" id="item-2" value="반짝이는 돌멩이" placeholder="보물 3">
+              </div>
+            </div>
+
+            <div class="print-actions">
+              <button id="btn-print-0" class="btn btn-secondary w-full" style="margin-bottom: 8px;">
+                <i data-lucide="printer"></i> 모험가 1 카드 인쇄
+              </button>
+              <button id="btn-print-1" class="btn btn-secondary w-full">
+                <i data-lucide="printer"></i> 모험가 2 카드 인쇄
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Character Card (Right) -->
+        <div class="card-display-panel dual-cards">
+          
+          <!-- CARD FOR CHARACTER 0 (Player 1) -->
+          <div class="character-card-preview" id="char-card-element-0">
+            <div class="card-glow"></div>
+            <div class="card-inner">
+              <div class="card-head">
+                <div class="avatar-circle" id="card-avatar-bg-0">
+                  <span class="avatar-emoji" id="card-avatar-emoji-0">🐰</span>
+                </div>
+                <div class="char-title">
+                  <h2 id="card-name-0">초록 토끼</h2>
+                  <span class="char-class" id="card-class-0">🐰 토끼 기사</span>
+                </div>
+              </div>
+              
+              <div class="card-section">
+                <h4>❤️ 체력 (하트 터치해서 조절)</h4>
+                <div class="heart-container" id="card-hearts-0" data-char-idx="0">
+                  <!-- Hearts dynamically populated -->
+                </div>
+              </div>
+
+              <div class="card-section">
+                <h4>📊 무지개 능력치</h4>
+                <div class="preview-stats">
+                  <div class="p-stat-item s-red" data-stat="sturdy">
+                    <span class="stat-name">튼튼이</span>
+                    <span class="stat-val" id="card-sturdy-0">★★☆</span>
+                  </div>
+                  <div class="p-stat-item s-green" data-stat="agile">
+                    <span class="stat-name">날쌘이</span>
+                    <span class="stat-val" id="card-agile-0">★★☆</span>
+                  </div>
+                  <div class="p-stat-item s-blue" data-stat="smart">
+                    <span class="stat-name">척척이</span>
+                    <span class="stat-val" id="card-smart-0">★★☆</span>
+                  </div>
+                  <div class="p-stat-item s-yellow" data-stat="charm">
+                    <span class="stat-name">상냥이</span>
+                    <span class="stat-val" id="card-charm-0">★★☆</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-section">
+                <h4>🎒 보물 가방</h4>
+                <ul class="preview-items" id="card-items-0">
+                  <!-- Items dynamically populated -->
+                </ul>
+              </div>
+
+              <div class="card-footer">
+                <span>모험가 1 (아이) 🌈</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD FOR CHARACTER 1 (Player 2) -->
+          <div class="character-card-preview" id="char-card-element-1">
+            <div class="card-glow"></div>
+            <div class="card-inner">
+              <div class="card-head">
+                <div class="avatar-circle" id="card-avatar-bg-1">
+                  <span class="avatar-emoji" id="card-avatar-emoji-1">🧚</span>
+                </div>
+                <div class="char-title">
+                  <h2 id="card-name-1">분홍 요정</h2>
+                  <span class="char-class" id="card-class-1">🧚 요정 마법사</span>
+                </div>
+              </div>
+              
+              <div class="card-section">
+                <h4>❤️ 체력 (하트 터치해서 조절)</h4>
+                <div class="heart-container" id="card-hearts-1" data-char-idx="1">
+                  <!-- Hearts dynamically populated -->
+                </div>
+              </div>
+
+              <div class="card-section">
+                <h4>📊 무지개 능력치</h4>
+                <div class="preview-stats">
+                  <div class="p-stat-item s-red" data-stat="sturdy">
+                    <span class="stat-name">튼튼이</span>
+                    <span class="stat-val" id="card-sturdy-1">★★☆</span>
+                  </div>
+                  <div class="p-stat-item s-green" data-stat="agile">
+                    <span class="stat-name">날쌘이</span>
+                    <span class="stat-val" id="card-agile-1">★★☆</span>
+                  </div>
+                  <div class="p-stat-item s-blue" data-stat="smart">
+                    <span class="stat-name">척척이</span>
+                    <span class="stat-val" id="card-smart-1">★★☆</span>
+                  </div>
+                  <div class="p-stat-item s-yellow" data-stat="charm">
+                    <span class="stat-name">상냥이</span>
+                    <span class="stat-val" id="card-charm-1">★★☆</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-section">
+                <h4>🎒 보물 가방</h4>
+                <ul class="preview-items" id="card-items-1">
+                  <!-- Items dynamically populated -->
+                </ul>
+              </div>
+
+              <div class="card-footer">
+                <span>모험가 2 (엄마) 🌈</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= TAB: DICE ROLLER ================= -->
+    <section id="tab-dice" class="tab-content no-print">
+      <div class="dice-playground">
+        <div class="card dice-selector-card">
+          <h3>🎲 주사위 굴리기 마당</h3>
+          
+          <!-- Character selector for rolling -->
+          <div class="dice-char-selector" style="margin-top: 15px; margin-bottom: 15px;">
+            <label>누가 판정하나요?</label>
+            <div class="dice-char-tabs">
+              <button class="dice-char-btn active" data-char-idx="0">모험가 1 (아이)</button>
+              <button class="dice-char-btn" data-char-idx="1">모험가 2 (엄마)</button>
+            </div>
+          </div>
+
+          <p>도전하려는 행동의 능력을 선택하면 자동으로 기본 주사위 개수가 설정됩니다.</p>
+          
+          <div class="dice-skill-selectors">
+            <button class="skill-select-btn s-red active" data-stat="sturdy">
+              <span>🔴 튼튼이 판정</span>
+              <small id="roll-sturdy-stars">★★☆</small>
+            </button>
+            <button class="skill-select-btn s-green" data-stat="agile">
+              <span>🟢 날쌘이 판정</span>
+              <small id="roll-agile-stars">★★☆</small>
+            </button>
+            <button class="skill-select-btn s-blue" data-stat="smart">
+              <span>🔵 척척이 판정</span>
+              <small id="roll-smart-stars">★★☆</small>
+            </button>
+            <button class="skill-select-btn s-yellow" data-stat="charm">
+              <span>🟡 상냥이 판정</span>
+              <small id="roll-charm-stars">★★☆</small>
+            </button>
+          </div>
+
+          <div class="dice-qty-picker">
+            <label>주사위 굴릴 개수</label>
+            <div class="qty-control">
+              <button id="qty-minus" class="qty-btn"><i data-lucide="minus"></i></button>
+              <span id="dice-qty">2</span>
+              <button id="qty-plus" class="qty-btn"><i data-lucide="plus"></i></button>
+            </div>
+            <div class="dice-helpers">
+              <button id="btn-help-dice" class="btn btn-small btn-info">
+                <i data-lucide="sparkle"></i> 도움 주사위 추가 (+1)
+              </button>
+              <button id="btn-reset-dice" class="btn btn-small btn-secondary">원래대로</button>
+            </div>
+          </div>
+
+          <button id="btn-roll-dice" class="btn btn-primary btn-large w-full">
+            <i data-lucide="dices"></i> 데굴데굴 주사위 던지기!
+          </button>
+        </div>
+
+        <!-- Dice Results Screen -->
+        <div class="card dice-result-card">
+          <div class="result-placeholder" id="result-placeholder">
+            <div class="bubbly-icon">🎲</div>
+            <h4>주사위를 던져 결과를 확인하세요!</h4>
+            <p>과연 성공할 수 있을까요? 두근두근!</p>
+          </div>
+          
+          <div class="result-display hidden" id="result-display">
+            <div class="dice-faces-container" id="dice-faces">
+              <!-- Animated Dices will go here -->
+            </div>
+            
+            <div class="result-verdict" id="result-verdict">
+              <div class="verdict-banner success">
+                <span class="verdict-emoji">🎉</span>
+                <div class="verdict-text">
+                  <h3>대성공!</h3>
+                  <p>별 2개 획득! 정말 멋지게 성공했어요!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= TAB: ADVENTURES ================= -->
+    <section id="tab-adventures" class="tab-content no-print">
+      <div class="adventures-container">
+        
+        <!-- Sidebar: Episode List -->
+        <aside class="adventure-sidebar">
+          <div class="card">
+            <h3>🗺️ 모험 이야기책</h3>
+            <div class="episode-list">
+              <button class="episode-btn active" data-episode="ep-bear">
+                <span class="ep-num">제 1 화</span>
+                <span class="ep-title">🐻 아기 곰의 딸기 케이크</span>
+              </button>
+              <button class="episode-btn" data-episode="ep-star">
+                <span class="ep-num">제 2 화</span>
+                <span class="ep-title">🧚 별나라 요정의 눈물</span>
+              </button>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Display: Interactive Scenario Play -->
+        <div class="adventure-play-panel">
+          
+          <!-- EPISODE 1: BEAR -->
+          <div class="episode-content active" id="ep-bear">
+            <div class="card ep-intro-card">
+              <div class="ep-badge">제 1 화</div>
+              <h2>🐻 잃어버린 아기 곰의 딸기 케이크</h2>
+              <p class="story-desc">오늘은 귀여운 아기 곰 웅이의 다섯 번째 생일입니다. 그런데 심술쟁이 바람이가 생일 파티 직전에 생일 케이크를 통째로 숲속으로 날려 보냈어요! 웅이를 도와 마법의 숲으로 모험을 떠나요!</p>
+            </div>
+
+            <!-- Scene Timeline -->
+            <div class="timeline">
+              
+              <!-- Scene: Intro -->
+              <div class="timeline-item">
+                <div class="time-badge">도입</div>
+                <div class="card scene-card">
+                  <h4>😭 울고 있는 아기 곰 웅이</h4>
+                  <div class="gm-script">
+                    <span class="script-label">📖 아빠가 읽어주세요:</span>
+                    <blockquote>"마법의 숲 입구에 도착하니, 커다란 나무 그루터기에 앉아 엉엉 울고 있는 아기 곰 웅이가 보여요. '에앙~ 오늘 내 생일인데... 바람이가 내 맛있는 딸기 케이크를 휙 불어서 숲속으로 가져가 버렸어!' 웅이의 뺨에는 눈물이 가득 흘러요."</blockquote>
+                  </div>
+                  <div class="gm-actions">
+                    <span class="action-label">🛠️ GM 가이드 (행동 진행):</span>
+                    <p>아이에게 웅이를 어떻게 달래줄지 물어보게 하세요. (안아주기, 눈물 닦아주기 등)</p>
+                    <div class="suggested-roll">
+                      <span>추천 판정:</span> <span class="badge s-yellow">🟡 상냥이 판정</span>
+                    </div>
+                    <div class="roll-branches">
+                      <div class="branch success">
+                        <strong>대성공:</strong> 웅이가 기뻐하며 고맙다고 <strong>반짝이 하트 스티커</strong>(다음 판정 주사위 +1)를 선물해요.
+                      </div>
+                      <div class="branch twist">
+                        <strong>어라라?:</strong> 웅이가 코를 너무 세게 풀어서 콧물이 방울방울 튀어나와 모두 깔깔 웃어요!
+                      </div>
+                    </div>
+                  </div>
+                  <div class="scene-complete-toggle">
+                    <input type="checkbox" id="check-ep1-intro" class="complete-checkbox">
+                    <label for="check-ep1-intro">클리어! (다음 장소로 출발! 🐾)</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Scene: 1 -->
+              <div class="timeline-item">
+                <div class="time-badge">장면 1</div>
+                <div class="card scene-card">
+                  <h4>🐿️ 다람쥐 할아버지의 수수께끼</h4>
+                  <div class="gm-script">
+                    <span class="script-label">📖 아빠가 읽어주세요:</span>
+                    <blockquote>"깊은 숲속으로 들어오니 커다란 도토리나무 위에 돋보기안경을 쓴 다람쥐 할아버지가 보여요. '허허허, 딸기 케이크가 바람을 타고 날아가는 걸 보았지. 하지만 비밀 지름길을 지나가려면 내 요술 수수께끼를 풀어야 한단다!'"</blockquote>
+                  </div>
+                  <div class="gm-actions">
+                    <span class="action-label">🛠️ GM 가이드 (수수께끼 놀이):</span>
+                    <p>다람쥐 할아버지 연기를 하며 수수께끼를 내주세요:</p>
+                    <p class="riddle-text">"빨갛고 동그랗고 달콤한 봄의 과일, 겉에 깨알 같은 씨가 콕콕 박혀 있는 것은?" (답: 딸기)</p>
+                    <div class="suggested-roll">
+                      <span>추천 판정:</span> <span class="badge s-blue">🔵 척척이 판정</span>
+                    </div>
+                    <div class="roll-branches">
+                      <div class="branch success">
+                        <strong>대성공:</strong> 다람쥐 할아버지가 "아주 똑똑한 모험가로구만!" 하며 지도에 숨겨진 안전한 지름길을 열어줍니다.
+                      </div>
+                      <div class="branch twist">
+                        <strong>어라라?:</strong> 다람쥐 할아버지가 쿨쿨 잠이 듭니다! 바닥에 굴러간 도토리가 떼구르르 굴러 케이크 부스러기가 있는 길을 가리킵니다.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="scene-complete-toggle">
+                    <input type="checkbox" id="check-ep1-sc1" class="complete-checkbox">
+                    <label for="check-ep1-sc1">클리어! (다음 장소로 출발! 🐾)</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Scene: 2 -->
+              <div class="timeline-item">
+                <div class="time-badge">장면 2</div>
+                <div class="card scene-card">
+                  <h4>🫧 뽀글뽀글 거품 계곡</h4>
+                  <div class="gm-script">
+                    <span class="script-label">📖 아빠가 읽어주세요:</span>
+                    <blockquote>"길을 따라가니 앞이 보이지 않을 정도로 알록달록한 거품 비눗방울이 퐁퐁 솟아나는 계곡이 나왔어요! 거품 다리를 껑충 건너가야 하는데, 계곡 바람 때문에 다리가 흔들흔들해요!"</blockquote>
+                  </div>
+                  <div class="gm-actions">
+                    <span class="action-label">🛠️ GM 가이드 (동작 묘사):</span>
+                    <p>어떻게 건널지 물어보세요. (점프하기, 날아가기, 엄마 손 잡기 등)</p>
+                    <div class="suggested-roll">
+                      <span>추천 판정:</span> <span class="badge s-green">🟢 날쌘이</span> 또는 <span class="badge s-red">🔴 튼튼이 판정</span>
+                    </div>
+                    <div class="roll-branches">
+                      <div class="branch success">
+                        <strong>대성공:</strong> 가뿐하게 구름 위를 건너듯 거품 계곡을 껑충 뛰어 통과합니다!
+                      </div>
+                      <div class="branch twist">
+                        <strong>어라라?:</strong> 미끄러져 떨어졌지만, 큰 비눗방울에 몸이 쏙 들어가 통통 하늘을 납니다! (하지만 가시에 닿아 퐁 터지며 하트가 1개 깎여요. 아야!)
+                      </div>
+                    </div>
+                  </div>
+                  <div class="scene-complete-toggle">
+                    <input type="checkbox" id="check-ep1-sc2" class="complete-checkbox">
+                    <label for="check-ep1-sc2">클리어! (다음 장소로 출발! 🐾)</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Scene: End -->
+              <div class="timeline-item">
+                <div class="time-badge">결말</div>
+                <div class="card scene-card">
+                  <h4>🎂 바람이의 생일 파티</h4>
+                  <div class="gm-script">
+                    <span class="script-label">📖 아빠가 읽어주세요:</span>
+                    <blockquote>"마침내 아름다운 꽃밭에 도착하니 케이크 옆에 꼬마 바람이가 쓸쓸하게 누워 있어요. '나도 생일 파티를 해보고 싶었어... 하지만 다들 내가 다가가면 도망치니까 쓸쓸해서 그랬어...' 바람이가 슬픈 목소리로 말해요."</blockquote>
+                  </div>
+                  <div class="gm-actions">
+                    <span class="action-label">🛠️ GM 가이드 (행동 진행):</span>
+                    <p>바람이에게 화를 내는 대신, 파티에 초대하거나 안아주도록 격려해 주세요.</p>
+                    <div class="suggested-roll">
+                      <span>추천 판정:</span> <span class="badge s-yellow">🟡 상냥이 판정</span> (행동만으로 자동 성공해 주셔도 좋습니다!)
+                    </div>
+                    <div class="happy-ending-text">
+                      <strong>🎉 해피엔딩!</strong>
+                      <p>바람이는 신나서 부드러운 봄바람으로 변해 꽃가루를 날려 줍니다. 웅이와 바람이, 그리고 모험가들이 둥글게 모여 앉아 생일 축하 노래를 부르고 딸기 케이크를 나누어 먹습니다! (실제 과자를 함께 나누어 드세요!)</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- EPISODE 2: STAR -->
+          <div class="episode-content" id="ep-star">
+            <div class="card ep-intro-card">
+              <div class="ep-badge">제 2 화</div>
+              <h2>🧚 반짝반짝 별나라 요정의 눈물</h2>
+              <p class="story-desc">어젯밤, 하늘에서 반짝반짝 빛나던 꼬마 별 요정 '뚱이'가 마당 정원으로 떨어졌어요. 별가루의 힘을 잃어버려 하늘로 돌아갈 수 없게 된 뚱이를 위해 숨겨진 3개의 별가루 조각을 찾는 모험을 펼칩니다.</p>
+            </div>
+
+            <!-- Scene Timeline -->
+            <div class="timeline">
+              
+              <!-- Scene: Intro -->
+              <div class="timeline-item">
+                <div class="time-badge">도입</div>
+                <div class="card scene-card">
+                  <h4>⭐ 정원에 떨어진 아기 별</h4>
+                  <div class="gm-script">
+                    <span class="script-label">📖 아빠가 읽어주세요:</span>
+                    <blockquote>"캄캄한 밤하늘에 별들이 총총 뜬 밤, 집 마당 구석의 예쁜 빨간 장미 화단 뒤에서 작은 흐느낌이 들려요. 꽃잎을 슬쩍 치워보니, 손바닥만 하고 노란 아기 별 뚱이가 반짝임을 거의 잃은 채 울상으로 앉아 있어요. '하늘로 가고 싶은데 빛이 안 나서 날 수가 없어... 흑흑.'"</blockquote>
+                  </div>
+                  <div class="gm-actions">
+                    <span class="action-label">🛠️ GM 가이드:</span>
+                    <p>뚱이를 다독여서 안심할 수 있게 해 주세요.</p>
+                    <div class="suggested-roll">
+                      <span>추천 판정:</span> <span class="badge s-yellow">🟡 상냥이 판정</span>
+                    </div>
+                    <div class="roll-branches">
+                      <div class="branch success">
+                        <strong>대성공:</strong> 뚱이가 따뜻함을 느끼며 몸에서 작고 예쁜 금색 불빛이 은은하게 나기 시작합니다.
+                      </div>
+                      <div class="branch twist">
+                        <strong>어라라?:</strong> 뚱이가 코를 훌쩍이며 모험가 옷에 반짝이 가루를 묻혀, 모험가의 손끝이 요술처럼 반짝반짝 빛나게 돼요.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="scene-complete-toggle">
+                    <input type="checkbox" id="check-ep2-intro" class="complete-checkbox">
+                    <label for="check-ep2-intro">뚱이와 친해지기 성공! (별가루 탐색 시작 🐾)</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Scene: 1 -->
+              <div class="timeline-item">
+                <div class="time-badge">장면 1</div>
+                <div class="card scene-card">
+                  <h4>🐱 냐옹 신사의 장미 놀이터 (첫 번째 조각)</h4>
+                  <div class="gm-script">
+                    <span class="script-label">📖 아빠가 읽어주세요:</span>
+                    <blockquote>"돌담길을 걸어가다 보니, 알록달록한 리본을 맨 고양이 '냐옹 신사'가 나타났어요. '야옹! 저 높다란 가시 장미 위에 반짝이는 가루 하나가 떨어져 있단다. 내가 높이 뛰어올라 잡아다 줄 수 있지만, 그 전에 나와 낚싯대 놀이로 나를 신나게 해 줘야 해!'"</blockquote>
+                  </div>
+                  <div class="gm-actions">
+                    <span class="action-label">🛠️ GM 가이드 (고양이 놀아주기):</span>
+                    <p>고양이를 신나게 해주기 위해 어떤 행동을 할까요? (달리기, 장난감 던지기 등)</p>
+                    <div class="suggested-roll">
+                      <span>추천 판정:</span> <span class="badge s-green">🟢 날쌘이</span> 또는 <span class="badge s-red">🔴 튼튼이 판정</span>
+                    </div>
+                    <div class="roll-branches">
+                      <div class="branch success">
+                        <strong>대성공:</strong> 냐옹 신사가 만족스러운 골골송을 부르며 슉 뛰어올라 장미 가시 덤불 위의 별가루를 가져옵니다. **(1번째 조각 조작!)**
+                      </div>
+                      <div class="branch twist">
+                        <strong>어라라?:</strong> 고양이 장난감을 피하다가 데굴데굴 굴러 먼지투성이가 돼요. 하지만 고양이가 그 모습이 재미있다며 숨겨둔 별가루를 선물로 줍니다. (하트 -1)
+                      </div>
+                    </div>
+                  </div>
+                  <div class="scene-complete-toggle">
+                    <input type="checkbox" id="check-ep2-sc1" class="complete-checkbox">
+                    <label for="check-ep2-sc1">첫 번째 조각 획득! 🐾</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Scene: 2 -->
+              <div class="timeline-item">
+                <div class="time-badge">장면 2</div>
+                <div class="card scene-card">
+                  <h4>🕷️ 반짝이 거미줄 수수께끼 (두 번째 조각)</h4>
+                  <div class="gm-script">
+                    <span class="script-label">📖 아빠가 읽어주세요:</span>
+                    <blockquote>"나무 밑동 어두운 굴 안에 두 번째 별가루가 보여요. 그런데 굴 입구에 덩치 큰 요술거미가 반짝이는 끈적거미줄로 문을 막아두고 있습니다. 거미줄을 건드리지 않고 쏙 들어가거나 거미를 설득해야 해요."</blockquote>
+                  </div>
+                  <div class="gm-actions">
+                    <span class="action-label">🛠️ GM 가이드:</span>
+                    <p>아이에게 거미와 협상(인사하고 길 빌려달라고 말하기)할지, 슉 지나갈지 물어봅니다.</p>
+                    <div class="suggested-roll">
+                      <span>추천 판정:</span> <span class="badge s-yellow">🟡 상냥이 (대화)</span> 또는 <span class="badge s-green">🟢 날쌘이 (유연성) 판정</span>
+                    </div>
+                    <div class="roll-branches">
+                      <div class="branch success">
+                        <strong>대성공:</strong> 거미가 "아주 매너 좋은 모험가군!" 하며 거미줄 문을 걷어주고 조각을 줍니다. **(2번째 조각!)**
+                      </div>
+                      <div class="branch twist">
+                        <strong>어라라?:</strong> 거미줄에 몸이 철썩 붙어 거미줄에 대롱대롱 매달려 버려요! 다행히 거미가 몸을 흔들어 떼어주며 가루를 같이 떨어트립니다. (하트 -1)
+                      </div>
+                    </div>
+                  </div>
+                  <div class="scene-complete-toggle">
+                    <input type="checkbox" id="check-ep2-sc2" class="complete-checkbox">
+                    <label for="check-ep2-sc2">두 번째 조각 획득! 🐾</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Scene: 3 -->
+              <div class="timeline-item">
+                <div class="time-badge">장면 3</div>
+                <div class="card scene-card">
+                  <h4>💦 소금쟁이의 물웅덩이 (세 번째 조각)</h4>
+                  <div class="gm-script">
+                    <span class="script-label">📖 아빠가 읽어주세요:</span>
+                    <blockquote>"마지막 별가루 조각은 빗물이 고인 작은 웅덩이 바닥에서 빛나고 있어요. 하지만 웅덩이 위를 스케이트 타듯 미끄러지는 욕심쟁이 소금쟁이 무리가 '이건 우리 보물이야! 아무도 못 가져가!' 하며 물을 지키고 있어요."</blockquote>
+                  </div>
+                  <div class="gm-actions">
+                    <span class="action-label">🛠️ GM 가이드:</span>
+                    <p>소금쟁이들의 주의를 돌리기 위한 아이디어를 내게 하세요. (나뭇잎으로 배 태워주기, 물을 첨벙거려서 겁주기 등)</p>
+                    <div class="suggested-roll">
+                      <span>추천 판정:</span> <span class="badge s-blue">🔵 척척이 (나뭇잎 배)</span> 또는 <span class="badge s-red">🔴 튼튼이 (물장구) 판정</span>
+                    </div>
+                    <div class="roll-branches">
+                      <div class="branch success">
+                        <strong>대성공:</strong> 소금쟁이들이 나뭇잎 배를 타고 신나게 놀거나, 깜짝 놀라 도망간 사이에 별가루 조각을 물 밖으로 쏙 꺼냅니다! **(3번째 조각!)**
+                      </div>
+                      <div class="branch twist">
+                        <strong>어라라?:</strong> 물이 얼굴로 팍 튀지만 소금쟁이가 점프하는 바람에 물웅덩이 돌이 튕겨나가며 별가루 조각이 머리 위로 톡 떨어집니다!
+                      </div>
+                    </div>
+                  </div>
+                  <div class="scene-complete-toggle">
+                    <input type="checkbox" id="check-ep2-sc3" class="complete-checkbox">
+                    <label for="check-ep2-sc3">세 번째 조각 획득! 🐾</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Scene: End -->
+              <div class="timeline-item">
+                <div class="time-badge">결말</div>
+                <div class="card scene-card">
+                  <h4>✨ 다시 반짝이는 아기 별</h4>
+                  <div class="gm-script">
+                    <span class="script-label">📖 아빠가 읽어주세요:</span>
+                    <blockquote>"별가루 세 조각을 웅이에게 가져다 대니 뚱이의 몸이 다시 부드럽고 황금빛으로 강하게 차올라요. '고마워 친구들아! 덕분에 하늘로 갈 수 있어!' 뚱이가 하늘을 향해 슈우우우웅 날아올라 오늘 밤 가장 밝게 반짝이기 시작합니다."</blockquote>
+                  </div>
+                  <div class="gm-actions">
+                    <span class="action-label">🛠️ GM 가이드:</span>
+                    <div class="happy-ending-text">
+                      <strong>🎉 해피엔딩!</strong>
+                      <p>뚱이는 하늘 높이 올라가 모험가들을 축복하는 무지개 별빛을 뿌려줍니다. 그리고 정원 가득 별 모양 캔디(실제 별사탕이나 달콤한 간식)가 떨어져요. 모험가들은 손을 흔들며 별나라 요정과 작별 인사를 나눕니다. 모험 대성공!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Print Sheet Layout (Invisible on Screen, Visible on Print) -->
+  <div id="print-sheet" class="print-only">
+    <div class="print-header">
+      <h1>🌈 무지개 열쇠 모험단 모험가 카드</h1>
+      <p>나의 영웅을 멋지게 색칠하고 채워보세요!</p>
+    </div>
+    
+    <div class="print-body">
+      <div class="print-left">
+        <!-- Drawing Area for Child -->
+        <div class="drawing-box">
+          <div class="drawing-text">여기에 내 모험가의<br>얼굴을 그려보세요! 🎨</div>
+        </div>
+        <div class="print-char-info">
+          <div class="print-info-row">
+            <span class="p-label">이름:</span>
+            <span class="p-val-underline" id="print-name-val">____________________</span>
+          </div>
+          <div class="print-info-row">
+            <span class="p-label">직업:</span>
+            <span class="p-val-underline" id="print-class-val">____________________</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="print-right">
+        <!-- Stats & Hearts & Items -->
+        <div class="print-section">
+          <h3>📊 나의 능력</h3>
+          <table class="print-stats-table">
+            <tr>
+              <td>🔴 튼튼이 (힘)</td>
+              <td id="print-sturdy-stars" class="stars-cell">★★★</td>
+            </tr>
+            <tr>
+              <td>🟢 날쌘이 (속도)</td>
+              <td id="print-agile-stars" class="stars-cell">★★★</td>
+            </tr>
+            <tr>
+              <td>🔵 척척이 (요술)</td>
+              <td id="print-smart-stars" class="stars-cell">★★★</td>
+            </tr>
+            <tr>
+              <td>🟡 상냥이 (마음)</td>
+              <td id="print-charm-stars" class="stars-cell">★★★</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="print-section">
+          <h3>❤️ 체력 (하트 5개)</h3>
+          <div class="print-hearts">
+            <span>❤️</span> <span>❤️</span> <span>❤️</span> <span>❤️</span> <span>❤️</span>
+          </div>
+        </div>
+
+        <div class="print-section">
+          <h3>🎒 보물 가방</h3>
+          <ul class="print-items-list">
+            <li id="print-item-0-val">1. ________________________________</li>
+            <li id="print-item-1-val">2. ________________________________</li>
+            <li id="print-item-2-val">3. ________________________________</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="print-footer">
+      <p>우리 가족 모험 도우미 • 무지개 열쇠 모험단 🌈</p>
+    </div>
+  </div>
+
+  <footer class="app-footer-bar no-print">
+    <p>&copy; 2026 무지개 열쇠 모험단 플레이 동반자. 아빠 GM 화이팅! 💖</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
