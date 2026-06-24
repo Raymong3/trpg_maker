@@ -1,5 +1,5 @@
 // ==========================================================================
-// 🌈 무지개 열쇠 모험단 Playful & Premium App Logic (2 Players Edition)
+// 🌈 무지개 열쇠 모험단 Playful & Premium App Logic (1P/2P Mode & Detailed GM Guide)
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
+  let playMode = '1';      // '1' = 1 Player, '2' = 2 Players
   let activeEditIndex = 0; // index of character currently being edited (0 or 1)
   let activeRollIndex = 0; // index of character whose stats are used for rolling (0 or 1)
 
@@ -84,6 +85,63 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('item-1'),
     document.getElementById('item-2')
   ];
+
+  // Mode buttons & panels
+  const modeBtns = document.querySelectorAll('.mode-btn');
+  const creatorSwitcher = document.querySelector('.creator-switcher');
+  const cardsContainer = document.querySelector('.card-display-panel.dual-cards');
+  const cardElement1 = document.getElementById('char-card-element-1');
+  const btnPrint1 = document.getElementById('btn-print-1');
+  const diceCharSelectorPanel = document.querySelector('.dice-char-selector');
+
+  // ================= PLAY MODE APPLICATION =================
+  function applyPlayMode() {
+    if (playMode === '1') {
+      // 1-Player Mode adjustments
+      creatorSwitcher.style.display = 'none';
+      activeEditIndex = 0; // Lock to Player 1 edit
+      
+      cardElement1.style.display = 'none';
+      cardsContainer.classList.add('single-mode'); // Stretch Card 1 center
+      
+      btnPrint1.style.display = 'none';
+      
+      diceCharSelectorPanel.style.display = 'none'; // Hide dice char switcher
+      activeRollIndex = 0; // Lock roll to Player 1
+      
+      // Update switcher active tab states
+      document.querySelectorAll('.switcher-btn').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-char-idx') === '0');
+      });
+      document.querySelectorAll('.dice-char-btn').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-char-idx') === '0');
+      });
+    } else {
+      // 2-Player Mode adjustments
+      creatorSwitcher.style.display = 'flex';
+      
+      cardElement1.style.display = 'block';
+      cardsContainer.classList.remove('single-mode'); // Side-by-side grid
+      
+      btnPrint1.style.display = 'block';
+      
+      diceCharSelectorPanel.style.display = 'flex'; // Show dice char switcher
+    }
+
+    loadActiveCharacterToForm();
+    updateCardPreviews();
+    syncActiveDiceQty();
+  }
+
+  // Play Mode Click Listeners
+  modeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      modeBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      playMode = btn.getAttribute('data-mode');
+      applyPlayMode();
+    });
+  });
 
   // ================= LOAD ACTIVE CHARACTER TO FORM =================
   function loadActiveCharacterToForm() {
@@ -567,7 +625,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ================= INITIALIZATION =================
-  loadActiveCharacterToForm();
-  updateCardPreviews();
-  syncActiveDiceQty();
+  applyPlayMode(); // Apply default (1-Player) mode
 });
