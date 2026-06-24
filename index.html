@@ -11,7 +11,1656 @@
   <!-- Lucide Icons for Premium UI -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <style>
+/* ==========================================================================
+   🌈 무지개 열쇠 모험단 Playful & Premium Design System
+   ========================================================================== */
+
+/* Color & Variable Definitions */
+:root {
+  /* Pastel & Vibrant Theme Colors */
+  --bg-gradient: linear-gradient(135deg, #fef9e7 0%, #f0f4f8 100%);
+  --header-bg: rgba(255, 255, 255, 0.85);
+  
+  --primary-color: #6c5ce7;
+  --primary-hover: #5b4bc4;
+  --secondary-color: #a8a5e6;
+  
+  --text-dark: #2d3436;
+  --text-muted: #636e72;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --border-color: #dfe6e9;
+  
+  /* Stats Pastel Colors */
+  --red-pastel: #ff7675;
+  --green-pastel: #55efc4;
+  --blue-pastel: #74b9ff;
+  --yellow-pastel: #ffeaa7;
+  --pink-pastel: #fd79a8;
+
+  --red-dark: #d63031;
+  --green-dark: #00b894;
+  --blue-dark: #0984e3;
+  --yellow-dark: #fdcb6e;
+  --pink-dark: #e84393;
+  
+  /* UI Constants */
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 20px rgba(108, 92, 231, 0.08);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --transition-fast: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --transition-normal: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Gothic A1', 'Fredoka', sans-serif;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+}
+
+/* App Header & Navigation */
+.app-header {
+  position: sticky;
+  top: 0;
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid rgba(108, 92, 231, 0.15);
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-emoji {
+  font-size: 2.2rem;
+  animation: logo-bounce 2s infinite ease-in-out;
+}
+
+@keyframes logo-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.header-logo h1 {
+  font-family: 'Fredoka', 'Gothic A1', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  background: linear-gradient(45deg, var(--primary-color), var(--pink-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.badge {
+  background: rgba(108, 92, 231, 0.1);
+  color: var(--primary-color);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.app-nav {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-fast);
+}
+
+.nav-btn i {
+  width: 18px;
+  height: 18px;
+}
+
+.nav-btn:hover {
+  background: rgba(108, 92, 231, 0.08);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.nav-btn.active {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+}
+
+/* App Main Content */
+.app-main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Tab Management */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card Styling */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: var(--shadow-md);
+  padding: 24px;
+  margin-bottom: 24px;
+  transition: var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  border-bottom: 2px dashed var(--border-color);
+  padding-pb: 12px;
+  padding-bottom: 12px;
+}
+
+.card-header h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.card-header i {
+  width: 24px;
+  height: 24px;
+}
+
+/* Color Coding for Cards & Icons */
+.icon-primary { color: var(--primary-color); }
+.icon-warning { color: var(--yellow-dark); }
+.icon-info { color: var(--blue-dark); }
+.icon-danger { color: var(--red-pastel); }
+
+/* ==========================================
+   TAB: RULES STYLING
+   ========================================== */
+.welcome-banner {
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.15) 0%, rgba(253, 121, 168, 0.15) 100%);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 24px;
+  border: 1px solid rgba(108, 92, 231, 0.2);
+}
+
+.welcome-banner h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.rule-card p {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.rule-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.r-stat-item {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.s-red { background: rgba(255, 118, 117, 0.15); color: var(--red-dark); }
+.s-green { background: rgba(85, 239, 196, 0.15); color: var(--green-dark); }
+.s-blue { background: rgba(116, 185, 255, 0.15); color: var(--blue-dark); }
+.s-yellow { background: rgba(255, 234, 167, 0.15); color: var(--yellow-dark); }
+
+.dice-results-guide {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.guide-item {
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  border-left: 5px solid;
+}
+
+.guide-item.success {
+  background: rgba(85, 239, 196, 0.1);
+  border-color: var(--green-dark);
+}
+
+.guide-item.twist {
+  background: rgba(116, 185, 255, 0.1);
+  border-color: var(--blue-dark);
+}
+
+.guide-badge {
+  font-weight: bold;
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.highlight-box {
+  background: linear-gradient(45deg, #fff9db, #fff3bf);
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}
+
+.gm-tips-card {
+  margin-top: 24px;
+  background: linear-gradient(135deg, #ffffff 0%, #fbf8ff 100%);
+  border: 1px solid rgba(108, 92, 231, 0.15);
+}
+
+.gm-tips-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.tip-item h4 {
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.tip-item p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================
+   TAB: CHARACTER SHEET STYLING
+   ========================================== */
+.sheet-container {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .sheet-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Creator Switcher Tab Styles */
+.creator-switcher {
+  display: flex;
+  background: #f1f2f6;
+  padding: 6px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.switcher-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-family: inherit;
+}
+
+.switcher-btn:hover {
+  color: var(--primary-color);
+}
+
+.switcher-btn.active {
+  background: white;
+  color: var(--primary-color);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Dual Card Grid Layout */
+.card-display-panel.dual-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  align-items: start;
+  width: 100%;
+}
+
+.character-card-preview {
+  position: relative;
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 24px;
+  overflow: hidden;
+  border: 2px solid white;
+  transition: var(--transition-normal);
+}
+
+/* Dice Roller Character selector */
+.dice-char-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dice-char-selector label {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.dice-char-tabs {
+  display: flex;
+  background: #f1f2f6;
+  padding: 6px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.dice-char-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-family: inherit;
+}
+
+.dice-char-btn:hover {
+  color: var(--primary-color);
+}
+
+.dice-char-btn.active {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+}
+
+.form-helper {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border-color);
+  background: white;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: var(--transition-fast);
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.1);
+}
+
+.preset-classes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.preset-btn, .color-btn, .qty-btn, .btn {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+.preset-btn {
+  background: white;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+}
+
+.preset-btn:hover, .preset-btn.active {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: rgba(108, 92, 231, 0.05);
+}
+
+.preset-btn.active {
+  background: rgba(108, 92, 231, 0.1);
+}
+
+.color-pickers {
+  display: flex;
+  gap: 10px;
+}
+
+.color-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.color-btn.active {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.c-red { background-color: var(--red-pastel); }
+.c-green { background-color: var(--green-pastel); }
+.c-blue { background-color: var(--blue-pastel); }
+.c-yellow { background-color: var(--yellow-pastel); }
+.c-pink { background-color: var(--pink-pastel); }
+
+/* Star Rating System */
+.stat-sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(240, 244, 248, 0.5);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-color);
+}
+
+.slider-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-label {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.star-rating {
+  display: flex;
+  gap: 6px;
+}
+
+.star-icon {
+  font-size: 1.5rem;
+  color: #ced6e0;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  user-select: none;
+}
+
+.star-icon:hover {
+  transform: scale(1.2);
+}
+
+.star-icon.active {
+  color: #ffa502;
+  text-shadow: 0 0 4px rgba(255, 165, 2, 0.5);
+}
+
+.red .star-icon.active { color: var(--red-pastel); }
+.green .star-icon.active { color: var(--green-dark); }
+.blue .star-icon.active { color: var(--blue-dark); }
+.yellow .star-icon.active { color: var(--yellow-dark); }
+
+.item-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Character Card Preview Header Background using CSS Variables */
+.character-card-preview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: var(--card-header-bg, linear-gradient(135deg, var(--red-pastel), var(--pink-pastel)));
+  z-index: 0;
+  opacity: 0.8;
+  transition: var(--transition-normal);
+}
+
+.card-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.avatar-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: white;
+  border: 4px solid white;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-normal);
+}
+
+.avatar-emoji {
+  font-size: 2.2rem;
+}
+
+.char-title h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.char-class {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  backdrop-filter: blur(4px);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.card-section {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.card-section h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+/* Interactive Hearts */
+.heart-container {
+  display: flex;
+  gap: 8px;
+}
+
+.heart-icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  color: #ced6e0;
+  fill: transparent;
+  transition: var(--transition-fast);
+}
+
+.heart-icon:hover {
+  transform: scale(1.2);
+}
+
+.heart-icon.active {
+  color: var(--red-pastel);
+  fill: var(--red-pastel);
+  animation: heartbeat 0.8s ease;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.3); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* Preview stats */
+.preview-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.preview-stats .p-stat-item {
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.preview-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.preview-items li {
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: rgba(108, 92, 231, 0.05);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--primary-color);
+}
+
+.card-footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* ==========================================
+   TAB: DICE PLAYGROUND STYLING
+   ========================================== */
+.dice-playground {
+  display: grid;
+  grid-template-columns: 1.2fr 1.8fr;
+  gap: 30px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .dice-playground {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dice-skill-selectors {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.skill-select-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
+  background: white;
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.skill-select-btn span {
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.skill-select-btn small {
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.skill-select-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.skill-select-btn.active {
+  border-width: 3px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.skill-select-btn.s-red.active { border-color: var(--red-pastel); background: rgba(255, 118, 117, 0.08); color: var(--red-dark); }
+.skill-select-btn.s-green.active { border-color: var(--green-pastel); background: rgba(85, 239, 196, 0.08); color: var(--green-dark); }
+.skill-select-btn.s-blue.active { border-color: var(--blue-pastel); background: rgba(116, 185, 255, 0.08); color: var(--blue-dark); }
+.skill-select-btn.s-yellow.active { border-color: var(--yellow-pastel); background: rgba(255, 234, 167, 0.08); color: var(--yellow-dark); }
+
+.dice-qty-picker {
+  background: #f8f9fa;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+}
+
+.dice-qty-picker label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.qty-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 14px;
+}
+
+.qty-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--border-color);
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.qty-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+#dice-qty {
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: 'Fredoka', sans-serif;
+  color: var(--primary-color);
+  min-width: 40px;
+  text-align: center;
+}
+
+.dice-helpers {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* Button Stylings */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  transition: var(--transition-fast);
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.2);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(108, 92, 231, 0.3);
+}
+
+.btn-secondary {
+  background: white;
+  border: 2px solid var(--border-color);
+  color: var(--text-dark);
+}
+
+.btn-secondary:hover {
+  background: #f1f2f6;
+  transform: translateY(-2px);
+}
+
+.btn-info {
+  background: var(--blue-pastel);
+  color: white;
+  box-shadow: 0 4px 10px rgba(116, 185, 255, 0.2);
+}
+
+.btn-info:hover {
+  background: var(--blue-dark);
+  transform: translateY(-2px);
+}
+
+.btn-small {
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  border-radius: var(--radius-sm);
+}
+
+.w-full { width: 100%; }
+.btn-large { padding: 18px 24px; font-size: 1.15rem; border-radius: var(--radius-lg); }
+
+/* Dice Result Display Panel */
+.dice-result-card {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-placeholder {
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.bubbly-icon {
+  font-size: 4rem;
+  margin-bottom: 12px;
+  animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+.result-placeholder h4 {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+  color: var(--text-dark);
+}
+
+.result-display {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.hidden { display: none !important; }
+
+/* Visual Dice Faces */
+.dice-faces-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  perspective: 600px;
+}
+
+/* Playful 2.5D dice block styling */
+.dice-block {
+  width: 70px;
+  height: 70px;
+  background: white;
+  border-radius: 16px;
+  border: 4px solid var(--border-color);
+  box-shadow: 0 8px 0 var(--border-color), 0 10px 16px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.dice-block.success-die {
+  border-color: #2ed573;
+  box-shadow: 0 8px 0 #26af5f, 0 10px 16px rgba(46, 213, 115, 0.2);
+  color: #2ed573;
+}
+
+.dice-block.fail-die {
+  border-color: #747d8c;
+  box-shadow: 0 8px 0 #57606f, 0 10px 16px rgba(0,0,0,0.05);
+  color: #747d8c;
+}
+
+.dice-block.rolling {
+  animation: dice-shake 0.5s ease-out;
+}
+
+@keyframes dice-shake {
+  0% { transform: rotate(0deg) scale(0.8); }
+  20% { transform: rotate(-15deg) scale(1.1); }
+  40% { transform: rotate(15deg) scale(1); }
+  60% { transform: rotate(-10deg) scale(1.05); }
+  80% { transform: rotate(5deg) scale(0.95); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+/* Verdict Display */
+.result-verdict {
+  width: 100%;
+  animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.verdict-banner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: var(--radius-md);
+  border: 2px solid;
+}
+
+.verdict-banner.success {
+  background: rgba(46, 213, 115, 0.1);
+  border-color: #2ed573;
+  color: #26af5f;
+}
+
+.verdict-banner.twist {
+  background: rgba(116, 185, 255, 0.1);
+  border-color: var(--blue-pastel);
+  color: var(--blue-dark);
+}
+
+.verdict-emoji {
+  font-size: 3rem;
+}
+
+.verdict-text h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.verdict-text p {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* ==========================================
+   TAB: ADVENTURES STYLING
+   ========================================== */
+.adventures-container {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .adventures-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.episode-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.episode-btn {
+  background: white;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  transition: var(--transition-fast);
+}
+
+.episode-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary-color);
+}
+
+.episode-btn.active {
+  border-color: var(--primary-color);
+  background: rgba(108, 92, 231, 0.05);
+  box-shadow: var(--shadow-sm);
+}
+
+.ep-num {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.ep-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.episode-content {
+  display: none;
+}
+
+.episode-content.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+.ep-intro-card {
+  background: linear-gradient(135deg, #a8a5e6 0%, #6c5ce7 100%);
+  color: white;
+  border: none;
+}
+
+.ep-intro-card .ep-badge {
+  background: rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.ep-intro-card h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.story-desc {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Timeline Layout */
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--border-color);
+  z-index: 0;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.time-badge {
+  position: absolute;
+  left: -40px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  border: 4px solid white;
+  font-weight: 800;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.timeline-item:nth-child(even) .time-badge {
+  background: var(--pink-pastel);
+}
+
+.scene-card {
+  margin-bottom: 0;
+}
+
+.scene-card h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 14px;
+}
+
+.gm-script {
+  background: #f8f9fa;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+  border-left: 5px solid var(--secondary-color);
+}
+
+.script-label {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.gm-script blockquote {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.gm-actions {
+  border-top: 1px dashed var(--border-color);
+  padding-top: 16px;
+}
+
+.action-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.gm-actions p {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.suggested-roll {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.suggested-roll .badge {
+  font-size: 0.8rem;
+}
+
+.roll-branches {
+  background: rgba(240, 244, 248, 0.4);
+  padding: 12px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.branch {
+  font-size: 0.85rem;
+  padding-left: 12px;
+  position: relative;
+}
+
+.branch::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.branch.success::before { background: var(--green-dark); }
+.branch.twist::before { background: var(--blue-dark); }
+
+.riddle-text {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  background: #fff9db;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+}
+
+.happy-ending-text {
+  background: linear-gradient(135deg, rgba(85, 239, 196, 0.15), rgba(116, 185, 255, 0.15));
+  border: 1px dashed var(--green-dark);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  margin-top: 10px;
+}
+
+.happy-ending-text strong {
+  color: var(--green-dark);
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Scene Interactive Checkbox */
+.scene-complete-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 12px;
+  margin-top: 14px;
+}
+
+.complete-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+.complete-checkbox + label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.complete-checkbox:checked + label {
+  color: var(--green-dark);
+  text-decoration: line-through;
+}
+
+/* App Footer Bar */
+.app-footer-bar {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border-color);
+  background: white;
+}
+
+/* ==========================================================================
+   🖨️ PRINT STYLING (For character sheets)
+   ========================================================================== */
+.print-only {
+  display: none;
+}
+
+@media print {
+  /* Hide standard web elements */
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+    min-height: auto;
+  }
+  
+  .app-main {
+    padding: 0;
+  }
+  
+  .print-only {
+    display: block !important;
+    padding: 20px;
+    font-family: 'Gothic A1', sans-serif;
+  }
+  
+  .print-header {
+    text-align: center;
+    border-bottom: 3px double black;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+  }
+  
+  .print-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+  }
+  
+  .print-body {
+    display: flex;
+    gap: 40px;
+  }
+  
+  .print-left {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .print-right {
+    flex: 1.8;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .drawing-box {
+    border: 3px dashed black;
+    border-radius: 12px;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #fdfdfd;
+  }
+  
+  .drawing-text {
+    font-weight: bold;
+    color: #777;
+    font-size: 1.1rem;
+  }
+  
+  .print-char-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .print-info-row {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+  
+  .p-label {
+    width: 60px;
+  }
+  
+  .p-val-underline {
+    flex: 1;
+    font-weight: normal;
+  }
+  
+  .print-section {
+    border: 2px solid black;
+    border-radius: 12px;
+    padding: 16px;
+    background: white;
+  }
+  
+  .print-section h3 {
+    font-size: 1.1rem;
+    border-bottom: 1px solid black;
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+  }
+  
+  .print-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .print-stats-table td {
+    padding: 6px 0;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .stars-cell {
+    text-align: right;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+  
+  .print-hearts {
+    display: flex;
+    gap: 14px;
+    font-size: 1.8rem;
+  }
+  
+  .print-items-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .print-items-list li {
+    font-size: 1.1rem;
+  }
+  
+  .print-footer {
+    margin-top: 40px;
+    border-top: 1px dashed #777;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+}
+
+/* Play Mode Selector Styles */
+.play-mode-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.play-mode-selector label {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.mode-tabs {
+  display: flex;
+  background: #f1f2f6;
+  padding: 6px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.mode-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-family: inherit;
+}
+
+.mode-btn:hover {
+  color: var(--primary-color);
+}
+
+.mode-btn.active {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Single Mode layout override */
+.card-display-panel.dual-cards.single-mode {
+  grid-template-columns: 1fr;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* GM Detailed Guide styles */
+.gm-detailed-guide {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.guide-step {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.guide-step:last-child {
+  border-bottom: none;
+}
+
+.step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.guide-step:nth-child(even) .step-num {
+  background: var(--pink-pastel);
+}
+
+.step-content h4 {
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.step-content p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.script-example {
+  background: #f8f9fa;
+  border-left: 4px solid var(--secondary-color);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+.trouble-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.trouble-list li {
+  background: rgba(116, 185, 255, 0.05);
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(116, 185, 255, 0.15);
+}
+
+.trouble-list strong {
+  color: var(--blue-dark);
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.trouble-list p {
+  font-size: 0.85rem;
+  color: var(--text-dark);
+}
+
+</style>
 </head>
 <body>
   <!-- Header / Navigation -->
@@ -880,6 +2529,706 @@
     <p>&copy; 2026 무지개 열쇠 모험단 플레이 동반자. 아빠 GM 화이팅! 💖</p>
   </footer>
 
-  <script src="app.js"></script>
+  <script>
+// ==========================================================================
+// 🌈 무지개 열쇠 모험단 Playful & Premium App Logic (Safe CDN & 2 Players Edition)
+// ==========================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  
+  // Safe icon creation wrapper to prevent script crashes on corporate intranets (e.g. K-water blocked CDNs)
+  function safeCreateIcons() {
+    if (typeof lucide !== 'undefined' && typeof lucide.createIcons === 'function') {
+      try {
+        lucide.createIcons();
+      } catch (err) {
+        console.warn('Lucide icon rendering failed:', err);
+      }
+    } else {
+      console.warn('Lucide CDN is not loaded. Tab navigation will work with fallback text.');
+    }
+  }
+
+  // Initial call
+  safeCreateIcons();
+
+  // ================= TAB SYSTEM =================
+  const navBtns = document.querySelectorAll('.nav-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetTab = btn.getAttribute('data-tab');
+
+      navBtns.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(tc => tc.classList.remove('active'));
+
+      btn.classList.add('active');
+      const activeTabEl = document.getElementById(targetTab);
+      if (activeTabEl) {
+        activeTabEl.classList.add('active');
+      }
+
+      // Re-trigger icon rendering safely
+      safeCreateIcons();
+    });
+  });
+
+  // ================= CHARACTER CREATOR STATE =================
+  const characters = [
+    {
+      name: '초록 토끼',
+      class: '🐰 토끼 기사',
+      emoji: '🐰',
+      color: 'var(--green-pastel)',
+      hearts: 3,
+      maxHearts: 5,
+      stats: {
+        sturdy: 3, // 튼튼이
+        agile: 2,  // 날쌘이
+        smart: 2,  // 척척이
+        charm: 1   // 상냥이
+      },
+      items: [
+        '요술 리본 지팡이',
+        '달콤한 딸기 사탕',
+        '반짝이는 돌멩이'
+      ]
+    },
+    {
+      name: '분홍 요정',
+      class: '🧚 요정 마법사',
+      emoji: '🧚',
+      color: 'var(--pink-pastel)',
+      hearts: 3,
+      maxHearts: 5,
+      stats: {
+        sturdy: 1, // 튼튼이
+        agile: 2,  // 날쌘이
+        smart: 3,  // 척척이
+        charm: 2   // 상냥이
+      },
+      items: [
+        '별가루 마법봉',
+        '달콤한 보름달 과자',
+        '따뜻한 비눗방울 비스킷'
+      ]
+    }
+  ];
+
+  let playMode = '1';      // '1' = 1 Player, '2' = 2 Players
+  let activeEditIndex = 0; // index of character currently being edited (0 or 1)
+  let activeRollIndex = 0; // index of character whose stats are used for rolling (0 or 1)
+
+  // Select DOM Elements safely
+  const inputName = document.getElementById('char-name');
+  const presetBtns = document.querySelectorAll('.preset-btn');
+  const customClassInput = document.getElementById('char-class-custom');
+  const colorBtns = document.querySelectorAll('.color-btn');
+  const starRatings = document.querySelectorAll('.star-rating');
+  const itemInputs = [
+    document.getElementById('item-0'),
+    document.getElementById('item-1'),
+    document.getElementById('item-2')
+  ];
+
+  // Mode buttons & panels
+  const modeBtns = document.querySelectorAll('.mode-btn');
+  const creatorSwitcher = document.querySelector('.creator-switcher');
+  const cardsContainer = document.querySelector('.card-display-panel.dual-cards');
+  const cardElement1 = document.getElementById('char-card-element-1');
+  const btnPrint1 = document.getElementById('btn-print-1');
+  const diceCharSelectorPanel = document.querySelector('.dice-char-selector');
+
+  // ================= PLAY MODE APPLICATION =================
+  function applyPlayMode() {
+    if (!creatorSwitcher || !cardElement1 || !cardsContainer || !btnPrint1 || !diceCharSelectorPanel) {
+      console.warn('Some play mode elements are missing in DOM.');
+      return;
+    }
+
+    if (playMode === '1') {
+      // 1-Player Mode adjustments
+      creatorSwitcher.style.display = 'none';
+      activeEditIndex = 0; // Lock to Player 1 edit
+      
+      cardElement1.style.display = 'none';
+      cardsContainer.classList.add('single-mode'); // Stretch Card 1 center
+      
+      btnPrint1.style.display = 'none';
+      
+      diceCharSelectorPanel.style.display = 'none'; // Hide dice char switcher
+      activeRollIndex = 0; // Lock roll to Player 1
+      
+      // Update switcher active tab states
+      document.querySelectorAll('.switcher-btn').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-char-idx') === '0');
+      });
+      document.querySelectorAll('.dice-char-btn').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-char-idx') === '0');
+      });
+    } else {
+      // 2-Player Mode adjustments
+      creatorSwitcher.style.display = 'flex';
+      
+      cardElement1.style.display = 'block';
+      cardsContainer.classList.remove('single-mode'); // Side-by-side grid
+      
+      btnPrint1.style.display = 'block';
+      
+      diceCharSelectorPanel.style.display = 'flex'; // Show dice char switcher
+    }
+
+    loadActiveCharacterToForm();
+    updateCardPreviews();
+    syncActiveDiceQty();
+  }
+
+  // Play Mode Click Listeners
+  modeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      modeBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      playMode = btn.getAttribute('data-mode');
+      applyPlayMode();
+    });
+  });
+
+  // ================= LOAD ACTIVE CHARACTER TO FORM =================
+  function loadActiveCharacterToForm() {
+    const char = characters[activeEditIndex];
+    if (!char) return;
+
+    if (inputName) inputName.value = char.name;
+    if (customClassInput) customClassInput.value = char.class;
+
+    // Sync Preset Class Buttons
+    let matchedPreset = false;
+    presetBtns.forEach(btn => {
+      const cls = btn.getAttribute('data-class');
+      if (cls === char.class) {
+        btn.classList.add('active');
+        matchedPreset = true;
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    if (customClassInput) {
+      if (!matchedPreset && char.class) {
+        presetBtns.forEach(btn => {
+          if (btn.getAttribute('data-class') === '직접 입력') {
+            btn.classList.add('active');
+          }
+        });
+        customClassInput.style.display = 'block';
+      } else {
+        customClassInput.style.display = 'none';
+      }
+    }
+
+    // Sync Colors pickers
+    colorBtns.forEach(btn => {
+      const color = btn.getAttribute('data-color');
+      if (color === char.color) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    // Sync Star Rating inputs
+    starRatings.forEach(ratingContainer => {
+      const statKey = ratingContainer.getAttribute('data-stat');
+      const val = char.stats[statKey];
+      const stars = ratingContainer.querySelectorAll('.star-icon');
+      
+      stars.forEach(s => {
+        const starVal = parseInt(s.getAttribute('data-value'));
+        s.classList.toggle('active', starVal <= val);
+      });
+    });
+
+    // Sync Items inputs
+    itemInputs.forEach((input, index) => {
+      if (input) {
+        input.value = char.items[index] || '';
+      }
+    });
+
+    // Update point counter
+    const totalUsed = Object.values(char.stats).reduce((a, b) => a + b, 0);
+    const ptsCounter = document.getElementById('stat-points-left');
+    if (ptsCounter) {
+      ptsCounter.textContent = 8 - totalUsed;
+    }
+  }
+
+  // ================= SYNC ALL PREVIEWS =================
+  function updateCardPreviews() {
+    characters.forEach((char, index) => {
+      const nameEl = document.getElementById(`card-name-${index}`);
+      const classEl = document.getElementById(`card-class-${index}`);
+      const emojiEl = document.getElementById(`card-avatar-emoji-${index}`);
+      const bgEl = document.getElementById(`card-avatar-bg-${index}`);
+      
+      if (nameEl) nameEl.textContent = char.name || '이름 없음';
+      if (classEl) classEl.textContent = char.class || '직업 없음';
+      if (emojiEl) emojiEl.textContent = char.emoji;
+      if (bgEl) bgEl.style.backgroundColor = char.color;
+
+      const cardEl = document.getElementById(`char-card-element-${index}`);
+      if (cardEl) {
+        cardEl.style.setProperty('--card-header-bg', char.color);
+      }
+
+      // Set stats stars
+      for (const [key, value] of Object.entries(char.stats)) {
+        const statLabel = document.getElementById(`card-${key}-${index}`);
+        if (statLabel) {
+          statLabel.textContent = '★'.repeat(value) + '☆'.repeat(3 - value);
+        }
+      }
+
+      // Set Items
+      const itemsList = document.getElementById(`card-items-${index}`);
+      if (itemsList) {
+        itemsList.innerHTML = '';
+        char.items.forEach(item => {
+          if (item && item.trim()) {
+            const li = document.createElement('li');
+            li.textContent = `✨ ${item}`;
+            itemsList.appendChild(li);
+          }
+        });
+      }
+
+      // Render hearts
+      renderHearts(index);
+    });
+
+    // Sync dice roller star counts in dice tab
+    syncDiceTabStarLabels();
+  }
+
+  // Render Hearts dynamically
+  function renderHearts(charIndex) {
+    const char = characters[charIndex];
+    const heartsContainer = document.getElementById(`card-hearts-${charIndex}`);
+    if (!heartsContainer) return;
+    heartsContainer.innerHTML = '';
+
+    for (let i = 0; i < char.maxHearts; i++) {
+      const heart = document.createElement('i');
+      heart.setAttribute('data-lucide', 'heart');
+      heart.classList.add('heart-icon');
+      heart.setAttribute('data-index', i);
+
+      if (i < char.hearts) {
+        heart.classList.add('active');
+      }
+
+      heart.addEventListener('click', (e) => {
+        const clickedIdx = parseInt(e.currentTarget.getAttribute('data-index'));
+        if (char.hearts === clickedIdx + 1) {
+          char.hearts = clickedIdx;
+        } else {
+          char.hearts = clickedIdx + 1;
+        }
+        renderHearts(charIndex);
+      });
+
+      heartsContainer.appendChild(heart);
+    }
+    safeCreateIcons();
+  }
+
+  // Sync dice roller skill star counts labels
+  function syncDiceTabStarLabels() {
+    const char = characters[activeRollIndex];
+    if (!char) return;
+    for (const [key, value] of Object.entries(char.stats)) {
+      const labelEl = document.getElementById(`roll-${key}-stars`);
+      if (labelEl) {
+        labelEl.textContent = '★'.repeat(value) + '☆'.repeat(3 - value);
+      }
+    }
+  }
+
+  // ================= EDITORS / INPUT HANDLERS =================
+
+  // Editor Character Switcher Tab
+  const switcherBtns = document.querySelectorAll('.switcher-btn');
+  switcherBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      switcherBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeEditIndex = parseInt(btn.getAttribute('data-char-idx'));
+      loadActiveCharacterToForm();
+    });
+  });
+
+  // Name change listener
+  if (inputName) {
+    inputName.addEventListener('input', (e) => {
+      characters[activeEditIndex].name = e.target.value;
+      updateCardPreviews();
+    });
+  }
+
+  // Preset Class buttons listener
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      presetBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const selectedClass = btn.getAttribute('data-class');
+      const selectedIcon = btn.getAttribute('data-icon');
+      const char = characters[activeEditIndex];
+
+      if (selectedClass === '직업 입력') {
+        if (customClassInput) {
+          customClassInput.style.display = 'block';
+          customClassInput.focus();
+          char.class = customClassInput.value || '모험가';
+        }
+        char.emoji = '✏️';
+      } else {
+        if (customClassInput) customClassInput.style.display = 'none';
+        char.class = selectedClass;
+
+        // Pick emojis
+        if (selectedIcon === 'rabbit') char.emoji = '🐰';
+        else if (selectedIcon === 'wizard') char.emoji = '🧚';
+        else if (selectedIcon === 'squirrel') char.emoji = '🐿️';
+        else if (selectedIcon === 'dragon') char.emoji = '🦖';
+      }
+      updateCardPreviews();
+    });
+  });
+
+  // Custom class text input listener
+  if (customClassInput) {
+    customClassInput.addEventListener('input', (e) => {
+      characters[activeEditIndex].class = e.target.value || '모험가';
+      updateCardPreviews();
+    });
+  }
+
+  // Color picker listener
+  colorBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      colorBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      characters[activeEditIndex].color = btn.getAttribute('data-color');
+      updateCardPreviews();
+    });
+  });
+
+  // Items inputs listener
+  itemInputs.forEach((input, index) => {
+    if (input) {
+      input.addEventListener('input', (e) => {
+        characters[activeEditIndex].items[index] = e.target.value;
+        updateCardPreviews();
+      });
+    }
+  });
+
+  // Star Ratings allocation logic
+  starRatings.forEach(ratingContainer => {
+    const statKey = ratingContainer.getAttribute('data-stat');
+    const stars = ratingContainer.querySelectorAll('.star-icon');
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        const clickedValue = parseInt(star.getAttribute('data-value'));
+        const char = characters[activeEditIndex];
+        
+        // Calculate hypothetic sum if change is made
+        const currentVal = char.stats[statKey];
+        const currentSum = Object.values(char.stats).reduce((a, b) => a + b, 0);
+        const newSum = currentSum - currentVal + clickedValue;
+
+        if (newSum <= 8) {
+          char.stats[statKey] = clickedValue;
+          
+          // Toggle UI star activation
+          stars.forEach(s => {
+            const val = parseInt(s.getAttribute('data-value'));
+            s.classList.toggle('active', val <= clickedValue);
+          });
+
+          updateCardPreviews();
+          syncActiveDiceQty(); // update active roller qty if necessary
+        } else {
+          // Play a slight shake/error effect on points left label
+          const counter = document.getElementById('stat-points-left');
+          if (counter) {
+            counter.style.color = 'var(--red-dark)';
+            counter.style.fontWeight = 'bold';
+            setTimeout(() => {
+              counter.style.color = '';
+              counter.style.fontWeight = '';
+            }, 500);
+          }
+        }
+      });
+    });
+  });
+
+
+  // ================= DICE ROLLER LOGIC =================
+  let activeRollerSkill = 'sturdy'; // default
+  let diceQty = 3; // default based on active roll char sturdy stat
+
+  const diceCharBtns = document.querySelectorAll('.dice-char-btn');
+  const skillSelectBtns = document.querySelectorAll('.skill-select-btn');
+  const diceQtyText = document.getElementById('dice-qty');
+  const qtyMinus = document.getElementById('qty-minus');
+  const qtyPlus = document.getElementById('qty-plus');
+  const btnHelpDice = document.getElementById('btn-help-dice');
+  const btnResetDice = document.getElementById('btn-reset-dice');
+  const btnRollDice = document.getElementById('btn-roll-dice');
+
+  const resultPlaceholder = document.getElementById('result-placeholder');
+  const resultDisplay = document.getElementById('result-display');
+  const diceFacesContainer = document.getElementById('dice-faces');
+  const resultVerdict = document.getElementById('result-verdict');
+
+  // Switch Character in Dice tab listener
+  diceCharBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      diceCharBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeRollIndex = parseInt(btn.getAttribute('data-char-idx'));
+
+      syncDiceTabStarLabels();
+      syncActiveDiceQty();
+    });
+  });
+
+  // Set dice qty based on active skill rating
+  function syncActiveDiceQty() {
+    const char = characters[activeRollIndex];
+    if (!char) return;
+    const activeSkillRating = char.stats[activeRollerSkill];
+    diceQty = activeSkillRating;
+    updateDiceQtyDisplay();
+  }
+
+  function updateDiceQtyDisplay() {
+    if (diceQtyText) diceQtyText.textContent = diceQty;
+  }
+
+  // Skill button listener
+  skillSelectBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      skillSelectBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeRollerSkill = btn.getAttribute('data-stat');
+      syncActiveDiceQty();
+    });
+  });
+
+  // Dice Qty adjusters
+  if (qtyMinus) {
+    qtyMinus.addEventListener('click', () => {
+      if (diceQty > 1) {
+        diceQty--;
+        updateDiceQtyDisplay();
+      }
+    });
+  }
+
+  if (qtyPlus) {
+    qtyPlus.addEventListener('click', () => {
+      if (diceQty < 6) {
+        diceQty++;
+        updateDiceQtyDisplay();
+      }
+    });
+  }
+
+  // Add Help Die (+1)
+  if (btnHelpDice) {
+    btnHelpDice.addEventListener('click', () => {
+      if (diceQty < 6) {
+        diceQty++;
+        updateDiceQtyDisplay();
+        btnHelpDice.classList.add('pulse');
+        setTimeout(() => btnHelpDice.classList.remove('pulse'), 400);
+      }
+    });
+  }
+
+  // Reset to original rating
+  if (btnResetDice) {
+    btnResetDice.addEventListener('click', () => {
+      syncActiveDiceQty();
+    });
+  }
+
+  // Core Rolling Action
+  if (btnRollDice) {
+    btnRollDice.addEventListener('click', () => {
+      if (resultPlaceholder) resultPlaceholder.classList.add('hidden');
+      if (resultDisplay) resultDisplay.classList.remove('hidden');
+
+      if (diceFacesContainer) diceFacesContainer.innerHTML = '';
+      if (resultVerdict) resultVerdict.classList.add('hidden');
+
+      const rolledValues = [];
+      for (let i = 0; i < diceQty; i++) {
+        const val = Math.floor(Math.random() * 6) + 1;
+        rolledValues.push(val);
+
+        const die = document.createElement('div');
+        die.classList.add('dice-block', 'rolling');
+        die.textContent = '?';
+        if (diceFacesContainer) diceFacesContainer.appendChild(die);
+      }
+
+      let animationTicks = 0;
+      const interval = setInterval(() => {
+        const diceBlocks = document.querySelectorAll('.dice-block');
+        diceBlocks.forEach(block => {
+          block.textContent = Math.floor(Math.random() * 6) + 1;
+        });
+        animationTicks++;
+        if (animationTicks > 8) {
+          clearInterval(interval);
+          finalizeRollResults(rolledValues);
+        }
+      }, 60);
+    });
+  }
+
+  // Finalize roll results
+  function finalizeRollResults(values) {
+    const diceBlocks = document.querySelectorAll('.dice-block');
+    const rollerName = characters[activeRollIndex].name || '모험가';
+    let successes = 0;
+
+    values.forEach((val, idx) => {
+      const isSuccess = val >= 4;
+      if (isSuccess) successes++;
+
+      const block = diceBlocks[idx];
+      if (block) {
+        block.classList.remove('rolling');
+        block.textContent = val;
+        block.classList.add(isSuccess ? 'success-die' : 'fail-die');
+      }
+    });
+
+    if (resultVerdict) {
+      resultVerdict.innerHTML = '';
+      resultVerdict.classList.remove('hidden');
+
+      const banner = document.createElement('div');
+      banner.classList.add('verdict-banner');
+
+      const emojiSpan = document.createElement('span');
+      emojiSpan.classList.add('verdict-emoji');
+
+      const textDiv = document.createElement('div');
+      textDiv.classList.add('verdict-text');
+      
+      const title = document.createElement('h3');
+      const desc = document.createElement('p');
+
+      if (successes > 0) {
+        banner.classList.add('success');
+        
+        if (successes >= 2) {
+          emojiSpan.textContent = '👑';
+          title.textContent = `${rollerName} 대성공!`;
+          desc.textContent = `주사위 ${successes}개가 성공했어요! 완벽하게 해내고 보너스 기분 좋은 일이 일어나요!`;
+        } else {
+          emojiSpan.textContent = '⭐';
+          title.textContent = `${rollerName} 성공!`;
+          desc.textContent = `주사위 1개가 성공했어요! 하려던 행동을 멋지게 마쳤어요.`;
+        }
+      } else {
+        banner.classList.add('twist');
+        emojiSpan.textContent = '🌀';
+        title.textContent = `${rollerName} 어라라? 반전 발생!`;
+        desc.textContent = '모든 주사위가 실패했지만 다치지 않아요. 신기하고 코믹한 일이 발생합니다! (하트 1개 차감, 아빠 GM의 재미난 설명 듣기)';
+      }
+
+      textDiv.appendChild(title);
+      textDiv.appendChild(desc);
+      banner.appendChild(emojiSpan);
+      banner.appendChild(textDiv);
+      resultVerdict.appendChild(banner);
+    }
+  }
+
+
+  // ================= ADVENTURE EPISODE TOGGLE =================
+  const episodeBtns = document.querySelectorAll('.episode-btn');
+  const episodeContents = document.querySelectorAll('.episode-content');
+
+  episodeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      episodeBtns.forEach(b => b.classList.remove('active'));
+      episodeContents.forEach(ec => ec.classList.remove('active'));
+
+      btn.classList.add('active');
+      const targetEp = btn.getAttribute('data-episode');
+      const activeEpEl = document.getElementById(targetEp);
+      if (activeEpEl) {
+        activeEpEl.classList.add('active');
+      }
+    });
+  });
+
+
+  // ================= PRINT HANDLERS =================
+  const btnPrint0 = document.getElementById('btn-print-0');
+  const btnPrint1 = document.getElementById('btn-print-1');
+
+  function printCharacter(charIdx) {
+    const char = characters[charIdx];
+    if (!char) return;
+    
+    // Fill the print sheet data safely
+    const nameVal = document.getElementById('print-name-val');
+    const classVal = document.getElementById('print-class-val');
+    const sturdyEl = document.getElementById('print-sturdy-stars');
+    const agileEl = document.getElementById('print-agile-stars');
+    const smartEl = document.getElementById('print-smart-stars');
+    const charmEl = document.getElementById('print-charm-stars');
+
+    if (nameVal) nameVal.textContent = char.name || '____________________';
+    if (classVal) classVal.textContent = char.class || '____________________';
+    
+    if (sturdyEl) sturdyEl.textContent = '★'.repeat(char.stats.sturdy) + '☆'.repeat(3 - char.stats.sturdy);
+    if (agileEl) agileEl.textContent = '★'.repeat(char.stats.agile) + '☆'.repeat(3 - char.stats.agile);
+    if (smartEl) smartEl.textContent = '★'.repeat(char.stats.smart) + '☆'.repeat(3 - char.stats.smart);
+    if (charmEl) charmEl.textContent = '★'.repeat(char.stats.charm) + '☆'.repeat(3 - char.stats.charm);
+
+    for (let i = 0; i < 3; i++) {
+      const itemVal = char.items[i] || '';
+      const printItemEl = document.getElementById(`print-item-${i}-val`);
+      if (printItemEl) {
+        printItemEl.textContent = itemVal ? `${i + 1}. ${itemVal}` : `${i + 1}. ________________________________`;
+      }
+    }
+
+    // Trigger print
+    window.print();
+  }
+
+  if (btnPrint0) btnPrint0.addEventListener('click', () => printCharacter(0));
+  if (btnPrint1) btnPrint1.addEventListener('click', () => printCharacter(1));
+
+
+  // ================= INITIALIZATION =================
+  applyPlayMode(); // Apply default (1-Player) mode
+});
+
+</script>
 </body>
 </html>
